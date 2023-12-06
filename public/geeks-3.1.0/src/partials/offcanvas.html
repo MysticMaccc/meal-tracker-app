@@ -1,0 +1,112 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" style="width: 600px;">
+  <div class="offcanvas-body" data-simplebar>
+    <div class="offcanvas-header px-2 pt-0">
+      <h3 class="offcanvas-title" id="offcanvasExampleLabel">Create Project</h3>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <!-- card body -->
+    <div class="container">
+      <!-- form -->
+      <div class="row">
+        <!-- form group -->
+        <div class="mb-3 col-12">
+          <label class="form-label">Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="Enter project title" required>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-12">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" placeholder="Enter brief about project..." rows="3"></textarea>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Start Date <span class="text-danger">*</span></label>
+          <div class="input-group me-3">
+            <input class="form-control flatpickr" type="text" placeholder="Select Date" aria-describedby="basic-addon2">
+
+            <span class="input-group-text text-muted" id="basic-addon2"><i class="fe fe-calendar"></i></span>
+
+          </div>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">End Date <span class="text-danger">*</span></label>
+          <div class="input-group me-3">
+            <input class="form-control flatpickr" type="text" placeholder="Select Date" aria-describedby="basic-addon3">
+
+            <span class="input-group-text text-muted" id="basic-addon3"><i class="fe fe-calendar"></i></span>
+
+          </div>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Privacy</label>
+          <select class="selectpicker" data-width="100%">
+            <option value="">Select Privacy</option>
+            <option value="Public to you team">Public to you team</option>
+            <option value="Private to project members">Private to project members</option>
+            <option value="Private to you">Private to you</option>
+          </select>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Team Members</label>
+          <select class="selectpicker" data-width="100%">
+            <option value="">Assign to owner</option>
+            <option value="Eleanor Pena">Eleanor Pena</option>
+            <option value="Courtney Henry">Courtney Henry</option>
+            <option value="Assign to Owner">Assign to Owner</option>
+          </select>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Budget</label>
+          <select class="selectpicker" data-width="100%">
+            <option value="">Project Budget</option>
+            <option value="Based on Project Amount">Based on Project Amount</option>
+            <option value="Based on Project Hours">Based on Project Hours</option>
+          </select>
+        </div>
+        <!-- form group -->
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Priority
+          </label>
+          <select class="selectpicker" data-width="100%">
+            <option value="">Set Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div class="col-md-3 col-12 mb-4">
+          <div>
+            <!-- logo -->
+            <h5 class="mb-3">Project Logo </h5>
+            <div class="icon-shape icon-xxl border rounded position-relative">
+              <span class="position-absolute"> <i class="bi bi-image fs-3  text-muted"></i></span>
+              <input class="form-control border-0 opacity-0" type="file">
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 mb-4">
+          <h5 class="mb-3">Cover Image </h5>
+          <form action="#" class="d-block dropzone border-dashed min-h-0 rounded-2">
+            <div class="fallback">
+              <input name="file" type="file" multiple >
+            </div>
+          </form>
+        </div>
+        <div class="col-md-8"></div>
+        <!-- button -->
+        <div class="col-12">
+          <button class="btn btn-primary" type="button">Submit</button>
+          <button type="button" class="btn btn-outline-primary ms-2" data-bs-dismiss="offcanvas"
+            aria-label="Close">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
