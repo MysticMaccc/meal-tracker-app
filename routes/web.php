@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QrcodeController;
 use App\Livewire\Components\CreateBarcodeComponent;
 use App\Livewire\Components\CreateEmployeeMealLogComponent;
 use App\Livewire\Components\CreateTraineeMealLogComponent;
@@ -13,6 +14,7 @@ use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
 use App\Livewire\ParentComponents\TraineeMealTrackerComponent;
 use App\Livewire\ParentComponents\WeeklyTraineeListComponent;
+use App\Models\Qrcode;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +45,7 @@ Route::middleware([
     //parent component
     Route::prefix('Emp-Meal-Tracker')->as('Emp-Meal-Tracker.')->group(function(){
             Route::get('show' , EmployeeMealTrackerComponent::class)->name('show');
+            // Route::get('Emp-Meal-Tracker/show' , EmployeeMealTrackerComponent::class)->name('Emp-Meal-Tracker.show');
     });
 
     Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
