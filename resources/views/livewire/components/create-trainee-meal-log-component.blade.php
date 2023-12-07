@@ -5,7 +5,7 @@
         @csrf
                 <div class="col-md-12">
                             <label class="label">Scan Here</label>
-                            <input type="text" class="form-control" wire:model="trainee_id" wire:keydown="create" autofocus>
+                            <input type="text" class="form-control" wire:model="trainee_id" wire:keydown="create" {{$autofocus}}>
                             @error('trainee_id') <span class="text-danger">{{$message}}</span> @enderror
                 </div>
                 

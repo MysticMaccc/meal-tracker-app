@@ -5,7 +5,7 @@
 
             <div class="row bg-white mt-3">
                     <div class="col-md-4">
-                            <livewire:components.create-employee-meal-log-component />
+                            <livewire:components.create-employee-meal-log-component :autofocus="$autofocus"  />
                     </div>
 
                     <div class="col-md-8 mb-2">

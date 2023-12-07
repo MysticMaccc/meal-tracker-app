@@ -7,6 +7,7 @@ use App\Livewire\Components\ShowBarcodeComponent;
 use App\Livewire\Components\ShowEmployeeMealLogComponent;
 use App\Livewire\Components\ShowTraineeListComponent;
 use App\Livewire\Components\ShowTraineeMealLogComponent;
+use App\Livewire\GenerateDocumentsComponent\GenerateBarcodeCardComponent;
 use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
@@ -58,7 +59,7 @@ Route::middleware([
     });
 
 
-    // component files
+    //Child Components
     //do not remove this routes because it will be used for component isolation
     Route::prefix('barcode')->as('barcode.')->group(function(){
         Route::get('show' , ShowBarcodeComponent::class)->name('show');
@@ -77,6 +78,11 @@ Route::middleware([
     Route::prefix('Trainee-Meal-Log')->as('Trainee-Meal-Log.')->group(function(){
         Route::get('show' , ShowTraineeMealLogComponent::class)->name('show');
         Route::get('create' , CreateTraineeMealLogComponent::class)->name('create');
+    });
+
+    //Generated Documents Components
+    Route::prefix('Generate-Document')->as('Document.')->group(function(){
+        Route::get('barcodeCard' , [GenerateBarcodeCardComponent::class , 'generate_Barcode'])->name('barcodeCard');
     });
     
 });
