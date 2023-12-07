@@ -22,7 +22,7 @@ class ShowEmployeeMealLogComponent extends Component
                                                                   ->orWhere('company' , 'LIKE' , '%'.$this->search.'%');
                                                    })
                                                    ->orderBy('id','desc')
-                                                   ->paginate(10);
+                                                   ->paginate(6);
                                              
         return view('livewire.components.show-employee-meal-log-component' , [
             'employee_meal_log_data' => $employee_meal_log_data

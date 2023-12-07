@@ -13,7 +13,7 @@
 					 <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static"
 						 aria-expanded="false">
 						 <div class="avatar avatar-md avatar-indicators avatar-online">
-							 <img alt="avatar" src="@@webRoot/assets/images/avatar/avatar-1.jpg"
+							 <img alt="avatar" src="{{asset('assets/images/avatar/avatar.jpg')}}"
 								 class="rounded-circle" >
 						 </div>
 					 </a>
@@ -21,7 +21,7 @@
 						 <div class="dropdown-item">
 							 <div class="d-flex">
 								 <div class="avatar avatar-md avatar-indicators avatar-online">
-									 <img alt="avatar" src="@@webRoot/assets/images/avatar/avatar-1.jpg"
+									 <img alt="avatar" src="{{asset('assets/images/avatar/avatar.jpg')}}"
 										 class="rounded-circle" >
 								 </div>
 								 <div class="ms-3 lh-1">

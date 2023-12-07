@@ -1,15 +1,16 @@
 <div>
         <x-submit-message />
+        
         <form class="row" wire:submit.prevent="create" method="POST">
             @csrf
                     <div class="col-md-12">
                                 <label class="label">Card Number</label>
-                                <input type="text" class="form-control" wire:model="card_number">
+                                <input type="text" class="form-control" wire:model="card_number" readonly>
                                 @error('card_number') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
                     <div class="col-md-12">
                                 <label class="label">Barcode Value</label>
-                                <input type="text" class="form-control" wire:model="barcode_value">
+                                <input type="text" class="form-control" wire:model="barcode_value" readonly>
                                 @error('barcode_value') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
                     <div class="col-md-12">

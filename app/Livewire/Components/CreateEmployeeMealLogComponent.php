@@ -12,10 +12,16 @@ class CreateEmployeeMealLogComponent extends Component
     public $barcode_value ;
     public $meal_type;
     public $currentTime;
+    public $autofocus;
 
     protected $rules = [
         'barcode_value' => 'required'
     ];
+
+    public function mount($autofocus)
+    {
+        $this->autofocus = $autofocus;
+    }
 
     public function render()
     {

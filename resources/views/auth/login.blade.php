@@ -13,11 +13,11 @@
                                 <h1 class="mb-1 fw-bold">Sign in</h1>
                                 <span>
                                     Don’t have an account?
-                                    <a href="{{ route('login') }}" class="ms-1" wire:navigate>Sign up</a>
+                                    <a href="{{ route('register') }}" class="ms-1" wire:navigate>Sign up</a>
                                 </span>
                             </div>
                             
-                            <x-submit-message class="mb-4" />
+                            <x-validation-errors class="mb-4" />
 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
