@@ -12,11 +12,16 @@ class CreateTraineeMealLogComponent extends Component
     public $trainee_id;
     public $meal_type;
     public $currentTime;
+    public $autofocus;
 
     protected $rules = [
         'trainee_id' => 'required'
     ];
 
+    public function mount($autofocus)
+    {
+        $this->autofocus=$autofocus;
+    }
     public function render()
     {
         return view('livewire.components.create-trainee-meal-log-component');

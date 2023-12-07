@@ -5,6 +5,7 @@ namespace App\Livewire\Components;
 use App\Models\Barcode;
 use App\Models\Category;
 use App\Models\Category_type;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class CreateBarcodeComponent extends Component
@@ -25,9 +26,17 @@ class CreateBarcodeComponent extends Component
         'category_type_id' => 'required' , 
         'owner' => 'required|max:50' , 
         'company' => 'required|alpha|max:50' , 
-        'start_date' => 'required|date' , 
-        'end_date' => 'required|date' , 
+        'start_date' => 'required|date|after_or_equal:today' , 
+        'end_date' => 'required|date|after:start_date' , 
     ];
+
+    public function mount()
+    {
+        $barcode_data = Barcode::orderBy('id', 'desc')->get();
+        
+        $this->card_number = ($barcode_data->first() ? $barcode_data->first()->card_number : null) + 1;
+        $this->barcode_value = ($barcode_data->first() ? $barcode_data->first()->barcode_value : null) + 1;
+    }
 
     public function render()
     {
@@ -43,7 +52,7 @@ class CreateBarcodeComponent extends Component
             $this->validate();
             try 
             {
-                Barcode::create([
+                $create_barcode = Barcode::create([
                     'card_number' => $this->card_number,
                     'barcode_value' => $this->barcode_value,
                     'category_id' => $this->category_id,
@@ -53,7 +62,12 @@ class CreateBarcodeComponent extends Component
                     'start_date' => $this->start_date,
                     'end_date' => $this->end_date,
                 ]);
+
+                $new_barcode_id = $create_barcode->id;
+                Session::put('id' , $new_barcode_id);
                 session()->flash('success' , 'Barcode info successfully created!');
+
+                return redirect()->to('/Generate-Document/barcodeCard');
             } 
             catch (\Exception $e) 
             {

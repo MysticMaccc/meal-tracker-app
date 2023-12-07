@@ -7,6 +7,7 @@ use Livewire\Component;
 class TraineeMealTrackerComponent extends Component
 {
     protected $listeners = ['mealLogUpdated' => 'refreshShowComponent'];
+    public $autofocus = "autofocus";
 
     public function render()
     {

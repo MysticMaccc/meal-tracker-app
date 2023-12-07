@@ -32,7 +32,7 @@ class ShowTraineeMealLogComponent extends Component
                                                 $query2->where('name' , 'LIKE' , '%'.$this->search.'%');
                                                  })
                                               ->orderBy('id' , 'desc')
-                                              ->paginate(10);
+                                              ->paginate(6);
 
         return view('livewire.components.show-trainee-meal-log-component' , compact('trainee_meal_data'));
         // ->layout('layouts.none');

@@ -3,6 +3,7 @@
 namespace App\Livewire\Components;
 
 use App\Models\Barcode;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -25,11 +26,17 @@ class ShowBarcodeComponent extends Component
                                 ->orWherehas('category_type' ,function ($query2) {
                                         $query2->where('name' , 'like' , '%'.$this->search.'%');
                                 })
-                                ->paginate(10);
+                                ->paginate(6);
 
         return view('livewire.components.show-barcode-component',[
             'barcode_data' => $barcode_data
         ]);
         // ->layout('layouts.none');
+    }
+
+    public function generate_Barcode($id)
+    {
+        Session::put('id' , $id);
+        return redirect()->to('/Generate-Document/barcodeCard');
     }
 }
