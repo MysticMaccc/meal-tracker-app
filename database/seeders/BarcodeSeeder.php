@@ -16,19 +16,19 @@ class BarcodeSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 200) as $index) {
+            $startDate = $faker->dateTimeBetween('now', '+30 days')->format('Y-m-d');
+            $endDate = $faker->dateTimeBetween($startDate, '+60 days')->format('Y-m-d');
+
             DB::table('barcodes')->insert([
-                'card_number' => $faker->unique()->numberBetween(1 , 5000),
-                'barcode_value' => $faker->unique()->ean13,
+                'card_number' => $index,
+                'barcode_value' => $index,
                 'category_id' => $faker->numberBetween(1 , 9),
                 'category_type_id' => $faker->numberBetween(1 , 11),
                 'owner' => $faker->name,
-                'company' => $faker->company,
-                'course' => $faker->word,
-                'course_code' => $faker->word,
-                'course_type' => $faker->word,
-                'start_date' => $faker->date,
-                'end_date' => $faker->date,
+                'company' => $faker->randomElement(['NETI','NTMA','NSMI']),
+                'start_date' => $startDate,
+                'end_date' => $endDate,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
