@@ -3,14 +3,17 @@
 use App\Livewire\Components\CreateBarcodeComponent;
 use App\Livewire\Components\CreateEmployeeMealLogComponent;
 use App\Livewire\Components\CreateTraineeMealLogComponent;
+use App\Livewire\Components\CreateUserComponent;
 use App\Livewire\Components\ShowBarcodeComponent;
 use App\Livewire\Components\ShowEmployeeMealLogComponent;
 use App\Livewire\Components\ShowTraineeListComponent;
 use App\Livewire\Components\ShowTraineeMealLogComponent;
+use App\Livewire\Components\ShowUserComponent;
 use App\Livewire\GenerateDocumentsComponent\GenerateBarcodeCardComponent;
 use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
+use App\Livewire\ParentComponents\ManageUserComponent;
 use App\Livewire\ParentComponents\TraineeMealTrackerComponent;
 use App\Livewire\ParentComponents\WeeklyTraineeListComponent;
 use Illuminate\Support\Facades\Route;
@@ -42,20 +45,24 @@ Route::middleware([
 
     //parent component
     Route::prefix('Emp-Meal-Tracker')->as('Emp-Meal-Tracker.')->group(function(){
-            Route::get('show' , EmployeeMealTrackerComponent::class)->name('show');
+            Route::get('index' , EmployeeMealTrackerComponent::class)->name('index');
     });
 
     Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
-            Route::get('show' , TraineeMealTrackerComponent::class)->name('show');
+            Route::get('index' , TraineeMealTrackerComponent::class)->name('index');
     });
 
     Route::prefix('Weekly-Trainee-List')->as('Weekly-Trainee-List.')->group(function(){
-            Route::get('show' , WeeklyTraineeListComponent::class)->name('show');
+            Route::get('index' , WeeklyTraineeListComponent::class)->name('index');
     });
 
     Route::prefix('Emp-Barcode-List')->as('Emp-Barcode-List.')->group(function(){
-            Route::get('show' , EmployeeBarcodeListComponent::class)->name('show');
+            Route::get('index' , EmployeeBarcodeListComponent::class)->name('index');
             Route::get('create' , CreateEmployeeBarcodeComponent::class)->name('create');
+    });
+
+    Route::prefix('Manage-User')->as('Manage-User.')->group(function(){
+            Route::get('index' , ManageUserComponent::class)->name('index');
     });
 
 
@@ -78,6 +85,11 @@ Route::middleware([
     Route::prefix('Trainee-Meal-Log')->as('Trainee-Meal-Log.')->group(function(){
         Route::get('show' , ShowTraineeMealLogComponent::class)->name('show');
         Route::get('create' , CreateTraineeMealLogComponent::class)->name('create');
+    });
+
+    Route::prefix('User')->as('User.')->group(function () {
+        Route::get('show' , ShowUserComponent::class)->name('show');
+        Route::get('create' , CreateUserComponent::class)->name('create');
     });
 
     //Generated Documents Components
