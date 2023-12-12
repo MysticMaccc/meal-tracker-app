@@ -82,24 +82,41 @@
 			<ul class="navbar-nav">
 
 				<li class="nav-item">
-						<a href="{{ route('Emp-Meal-Tracker.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Emp-Meal-Tracker.index') }}" class="nav-link" wire:navigate>
 							Employee Meal Tracker
 						</a>
 				</li>
 				<li class="nav-item">
-						<a href="{{ route('Trainee-Meal-Tracker.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Trainee-Meal-Tracker.index') }}" class="nav-link" wire:navigate>
 							Trainee Meal Tracker
 						</a>
 				</li>
 				<li class="nav-item">
-						<a href="{{ route('Weekly-Trainee-List.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Weekly-Trainee-List.index') }}" class="nav-link" wire:navigate>
 							Weekly Trainee List
 						</a>
 				</li>
 				<li class="nav-item">
-						<a href="{{ route('Emp-Barcode-List.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Emp-Barcode-List.index') }}" class="nav-link" wire:navigate>
 							Employee Barcode List
 						</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLanding" data-bs-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						Settings
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarLanding">
+						<li>
+							<h4 class="dropdown-header">Settings</h4>
+						</li>
+				
+						<li>
+							<a href="{{route('Manage-User.index')}}" class="dropdown-item d-flex justify-content-between" wire:navigate>
+								User Management
+							</a>
+						</li>
+					</ul>
 				</li>
 				
 			</ul>
