@@ -59,6 +59,7 @@ Route::middleware([
     Route::prefix('Emp-Barcode-List')->as('Emp-Barcode-List.')->group(function(){
             Route::get('show' , EmployeeBarcodeListComponent::class)->name('show');
             Route::get('create' , CreateEmployeeBarcodeComponent::class)->name('create');
+            Route::get('update' , CreateEmployeeBarcodeComponent::class)->name('update');
     });
 
 

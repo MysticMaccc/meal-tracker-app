@@ -1,8 +1,20 @@
 <div>
         <x-submit-message />
-        
-        <form class="row" wire:submit.prevent="create" method="POST">
+        @if ($update_done)
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Update Successfully!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>            
+        @endif
+        @if (session()->has('idtoedit'))
+                <form class="row" wire:submit.prevent="update" method="POST">       
+        @else
+                <form class="row" wire:submit.prevent="create" method="POST">
+        @endif
+                
             @csrf
+                
                     <div class="col-md-12">
                                 <label class="label">Card Number</label>
                                 <input type="text" class="form-control" wire:model="card_number" readonly>
@@ -55,7 +67,11 @@
                     </div>
 
                     <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary mt-2">Save</button>
+                        @if (session()->has('idtoedit'))
+                                <button type="submit" class="btn btn-info mt-2">Update</button>         
+                        @else
+                                <button type="submit" class="btn btn-primary mt-2">Save</button>  
+                        @endif
                     </div>
         </form>
 

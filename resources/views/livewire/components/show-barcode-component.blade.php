@@ -33,8 +33,11 @@
                                                                 <td>{{ $data->start_date }}</td>
                                                                 <td>{{ $data->end_date }}</td>
                                                                 <td>
-                                                                        <button class="btn btn-sm btn-info rounded-3" title="Print Card" wire:click="generate_Barcode({{$data->id}})">
+                                                                        <button class="m-1 btn btn-sm btn-info rounded-3" title="Print Card" wire:click="generate_Barcode({{$data->id}})">
                                                                                 <i class="bi bi-qr-code"></i>
+                                                                        </button>
+                                                                        <button class="m-1 btn btn-sm btn-info rounded-3" title="Edit" wire:click="editinfo({{$data->id}})">
+                                                                                <i class="bi bi-pencil"></i>
                                                                         </button>
                                                                 </td>
                                                         </tr>
