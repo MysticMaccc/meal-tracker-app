@@ -10,6 +10,8 @@ use App\Livewire\Components\ShowTraineeListComponent;
 use App\Livewire\Components\ShowTraineeMealLogComponent;
 use App\Livewire\Components\ShowUserComponent;
 use App\Livewire\GenerateDocumentsComponent\GenerateBarcodeCardComponent;
+use App\Livewire\GenerateDocumentsComponent\GenerateQRCodeComponent;
+use App\Livewire\HardwareComponents\QRCodeScannerComponent;
 use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
@@ -91,10 +93,11 @@ Route::middleware([
         Route::get('show' , ShowUserComponent::class)->name('show');
         Route::get('create' , CreateUserComponent::class)->name('create');
     });
-
+    
     //Generated Documents Components
     Route::prefix('Generate-Document')->as('Document.')->group(function(){
         Route::get('barcodeCard' , [GenerateBarcodeCardComponent::class , 'generate_Barcode'])->name('barcodeCard');
+        Route::get('QRCode' , [GenerateQRCodeComponent::class , 'generate_QRcode'])->name('QRCode');
     });
     
 });

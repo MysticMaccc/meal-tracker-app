@@ -34,7 +34,10 @@
                                                                         <td>{{ $data->start_date }}</td>
                                                                         <td>{{ $data->end_date }}</td>
                                                                         <td>
-                                                                                <button class="btn btn-sm btn-info rounded-3" title="Print Card" wire:click="generate_Barcode({{$data->id}})">
+                                                                                {{-- <button class="btn btn-sm btn-info rounded-3" title="Print Card" wire:click="generate_Barcode({{$data->id}})">
+                                                                                        <i class="bi bi-qr-code"></i>
+                                                                                </button> --}}
+                                                                                <button class="btn btn-sm btn-success rounded-3" title="Print QR Code" wire:click="generate_QRcode({{$data->id}})">
                                                                                         <i class="bi bi-qr-code"></i>
                                                                                 </button>
                                                                         </td>
