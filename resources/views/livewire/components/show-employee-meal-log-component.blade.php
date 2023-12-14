@@ -6,7 +6,7 @@
                 <input type="text" class="form-control" wire:model.live="search" placeholder="Enter card number, name, company, meal type,...">
         </div>
 
-        <div class="table-responsive mt-2 col-md-12">
+        <div class="table-responsive mt-2 col-md-12" wire:poll.keep-alive>
                         @if (count($employee_meal_log_data) > 0)
                                         <table class="table table-striped table-hover">
                                                 <thead>

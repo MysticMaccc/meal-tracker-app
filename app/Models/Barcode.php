@@ -33,5 +33,4 @@ class Barcode extends Model
     {
         return $this->hasMany(Employee_meal_log::class);
     }
-
 }
