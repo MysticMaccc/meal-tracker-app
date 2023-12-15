@@ -7,28 +7,22 @@
 
             <div class="table-responsive mt-2 col-md-12">
                     <x-submit-message />
-                    @if (!$user_data->isEmpty())
+                    @if (!$user_type_data->isEmpty())
                             <table class="table table-striped table-hover">
                                             <thead>
                                                     <tr>
-                                                            <th>Name</th>
-                                                            <th>Email</th>
-                                                            <th>User Type</th>
-                                                            <th>Created At</th>
+                                                            <th>User_Type</th>
                                                             <th>Action</th>
                                                     </tr>
                                             </thead>
                                             <tbody>
-                                                    @foreach ($user_data as $data)
+                                                    @foreach ($user_type_data as $data)
                                                             <tr>
                                                                 <td>{{$data->name}}</td>
-                                                                <td>{{$data->email}}</td>
-                                                                <td>{{$data->user_type->name}}</td>
-                                                                <td>{{$data->created_at}}</td>
                                                                 <td>
-                                                                     <button class="btn btn-sm btn-success" title="edit" wire:click="goToEdit({{$data->id}})">
-                                                                        <i class="bi bi-pencil-square"></i>
-                                                                     </button>
+                                                                        <button class="btn btn-success btn-sm" wire:click="goToEdit({{$data->id}})">
+                                                                                <i class="bi bi-pencil-fill"></i>
+                                                                        </button>
                                                                 </td>
                                                             </tr>
                                                     @endforeach
@@ -41,7 +35,7 @@
             </div>
 
             <div class="col-md-12">
-                    {{ $user_data->links("livewire::simple-bootstrap") }}
+                    {{ $user_type_data->links("livewire::simple-bootstrap") }}
             </div>
     </div>
 </section>
