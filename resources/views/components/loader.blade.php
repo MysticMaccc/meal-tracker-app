@@ -45,10 +45,24 @@
   }
 }
 </style>
-<div class="container1" style="display:overlay; justify-content: center; align-items:center;">
-    <div class="loader">
-      <div class="loader-shap"></div>
-      <div class="loader-shap"></div>
-      <div class="loader-shap"></div>
-    </div>
+
+
+
+
+<div style="position: relative;">
+  <!-- Your content here -->
+
+  <!-- Transparent overlay -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: auto;" wire:loading></div>
+
+  <!-- Loader -->
+  <span style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" wire:loading>
+    <div class="container1" style="display:overlay; justify-content: center; align-items:center;">
+      <div class="loader">
+        <div class="loader-shap"></div>
+        <div class="loader-shap"></div>
+        <div class="loader-shap"></div>
+      </div>
+  </div>
+  </span>
 </div>
