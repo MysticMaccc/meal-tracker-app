@@ -64,6 +64,7 @@ Route::middleware([
 
     Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
             Route::get('index' , TraineeMealTrackerComponent::class)->name('index');
+            Route::get('generateReport', [TraineeMealTrackerGenerateReport::class, 'generatePDF'])->name('generateReport');
     });
 
     Route::prefix('Weekly-Trainee-List')->as('Weekly-Trainee-List.')->group(function(){
