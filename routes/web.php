@@ -15,6 +15,7 @@ use App\Livewire\Components\ShowUserTypeComponent;
 use App\Livewire\Components\StoreUserTypeComponent;
 use App\Livewire\GenerateDocumentsComponent\GenerateBarcodeCardComponent;
 use App\Livewire\GenerateDocumentsComponent\GenerateQRCodeComponent;
+use App\Livewire\GenerateDocumentsComponent\TraineeMealTrackerGenerateReport;
 use App\Livewire\HardwareComponents\QRCodeScannerComponent;
 use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\CreateUserTypeComponent;
@@ -39,7 +40,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 Route::get('/', function () {
     return view('welcome');
