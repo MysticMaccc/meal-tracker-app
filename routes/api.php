@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Route;
 // */
 
 // no authentication yet!!!!
+
 Route::get('emp_meal_log/{barcode_value}' , [EmployeeMealLogController::class , 'store']);
 
 
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user(); 
 });
