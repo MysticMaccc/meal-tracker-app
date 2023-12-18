@@ -3,6 +3,7 @@
 namespace App\Livewire\ParentComponents;
 
 use App\Models\Employee_meal_log;
+use App\Models\Trainee_meal_log;
 use Livewire\Component;
 
 class GenerateReportsComponent extends Component
@@ -28,6 +29,21 @@ class GenerateReportsComponent extends Component
         session(['daterange' => date('F d, Y', strtotime($this->datefrom)).' - '.date('F d, Y', strtotime($this->dateto)) ]);
         return redirect()->route('Emp-Meal-Tracker.generateReport');
         
+    }
+
+    public function generatePDFTMT()
+    {
+        
+      
+        $this->validate();
+        $trainee_meal_log_data = Trainee_meal_log::where('date_scanned' , '>=' , $this->datefrom)
+                                                 ->where('date_scanned' , '<=' , $this->dateto)
+                                                 ->orderBy('id','desc')->get();
+
+        session(['meal_log' => $trainee_meal_log_data]);
+        session(['daterange' => date('F d, Y', strtotime($this->datefrom)).' - '.date('F d, Y', strtotime($this->dateto)) ]);
+        return redirect()->route('Trainee-Meal-Tracker.generateReport');
+
     }
 
     public function render()

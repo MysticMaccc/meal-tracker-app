@@ -49,7 +49,7 @@
                               </div>
                               <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="col-md-12">
-                                    <form wire:submit.prevent="generatePDFEMT" action="">
+                                    <form wire:submit.prevent="generatePDFTMT" action="">
                                         @csrf
                                         <div class="row">
                                         @error('datefrom') <small class="text-danger">** {{$message}} **</small> @enderror <br>
