@@ -89,4 +89,7 @@ class CreateEmployeeMealLogComponent extends Component
             $this->barcode_value = '';
     }
 
+
+    
+
 }

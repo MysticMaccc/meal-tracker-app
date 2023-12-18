@@ -8,6 +8,7 @@ use App\Livewire\Components\ShowEmployeeMealLogComponent;
 use App\Livewire\Components\ShowTraineeListComponent;
 use App\Livewire\Components\ShowTraineeMealLogComponent;
 use App\Livewire\GenerateDocumentsComponent\GenerateBarcodeCardComponent;
+use App\Livewire\GenerateDocumentsComponent\GenerateEmployeeMealReportsComponent;
 use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
@@ -41,9 +42,17 @@ Route::middleware([
     })->name('dashboard');
 
     //parent component
+
     Route::prefix('Emp-Meal-Tracker')->as('Emp-Meal-Tracker.')->group(function(){
             Route::get('show' , EmployeeMealTrackerComponent::class)->name('show');
+             // Route::get('Emp-Meal-Tracker/show' , EmployeeMealTrackerComponent::class)->name('Emp-Meal-Tracker.show');
+            Route::get('show/{datefrom}/{dateto}' , GenerateEmployeeMealReportsComponent::class)->name('employeemealreport');
+        //    Route::get('show/{datefrom}/{dateto}' , GenerateEmployeeMealReportsComponent::class)->name('employeemealreport');
+        //    Route::get('show/{datefrom}/{dateto}' ,[GenerateEmployeeMealReportsComponent::class, 'generatePdf'])->name('employeemealreport');
+           
     });
+  
+    
 
     Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
             Route::get('show' , TraineeMealTrackerComponent::class)->name('show');
