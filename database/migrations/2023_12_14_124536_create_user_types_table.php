@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('barcodes', function (Blueprint $table) {
-            $table->dropColumn('course');
-            $table->dropColumn('course_code');
-            $table->dropColumn('course_type');
+        Schema::create('user_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('is_deleted')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('user_types');
     }
 };

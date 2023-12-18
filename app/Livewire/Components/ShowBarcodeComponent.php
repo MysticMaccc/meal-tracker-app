@@ -44,4 +44,10 @@ class ShowBarcodeComponent extends Component
         Session::put('id' , $id);
         return redirect()->to('/Generate-Document/barcodeCard');
     }
+
+    public function generate_QRcode($id)
+    {
+        Session::put('id' , $id);
+        return redirect()->to('/Generate-Document/QRCode');
+    }
 }

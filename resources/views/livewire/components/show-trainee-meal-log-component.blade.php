@@ -7,41 +7,46 @@
                 </div>
 
                 <div class="table-responsive mt-2 col-md-12">
-                                <table class="table table-striped table-hover">
-                                        <thead>
-                                                <tr>
-                                                        <th>Rank</th>
-                                                        <th>Name</th>
-                                                        <th>Course</th>
-                                                        <th>Course Type</th>
-                                                        <th>Company</th>
-                                                        <th>Bus</th>
-                                                        <th>Dorm</th>
-                                                        <th>Date</th>
-                                                        <th>Time</th>
-                                                        <th>Meal Type</th>
-                                                </tr>
-                                        </thead>
-                                        <tbody>
-                                                @foreach ($trainee_meal_data as $data)
-                                                                <tr>
-                                                                <td>{{ $data->trainee_list->rank }}</td>
-                                                                <td>
-                                                                        {{ $data->trainee_list->lastname }} {{ $data->trainee_list->firstname }}
-                                                                        {{ $data->trainee_list->middlename }} {{ $data->trainee_list->suffix }}
-                                                                </td>
-                                                                <td>{{ $data->trainee_list->course }}</td>
-                                                                <td>{{ $data->trainee_list->course_type }}</td>
-                                                                <td>{{ $data->trainee_list->company }}</td>
-                                                                <td>{{ $data->trainee_list->bus }}</td>
-                                                                <td>{{ $data->trainee_list->dorm }}</td>
-                                                                <td>{{ $data->date_scanned }}</td>
-                                                                <td>{{ $data->time_scanned }}</td>
-                                                                <td>{{ $data->meal_type->name }}</td>
-                                                                </tr>
-                                                @endforeach
-                                        </tbody>
-                                </table>
+                                @if (count($trainee_meal_data) > 0)
+                                        <table class="table table-striped table-hover">
+                                                <thead>
+                                                        <tr>
+                                                                <th>Rank</th>
+                                                                <th>Name</th>
+                                                                <th>Course</th>
+                                                                <th>Course Type</th>
+                                                                <th>Company</th>
+                                                                <th>Bus</th>
+                                                                <th>Dorm</th>
+                                                                <th>Date</th>
+                                                                <th>Time</th>
+                                                                <th>Meal Type</th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                        @foreach ($trainee_meal_data as $data)
+                                                                        <tr>
+                                                                        <td>{{ $data->trainee_list->rank }}</td>
+                                                                        <td>
+                                                                                {{ $data->trainee_list->lastname }} {{ $data->trainee_list->firstname }}
+                                                                                {{ $data->trainee_list->middlename }} {{ $data->trainee_list->suffix }}
+                                                                        </td>
+                                                                        <td>{{ $data->trainee_list->course }}</td>
+                                                                        <td>{{ $data->trainee_list->course_type }}</td>
+                                                                        <td>{{ $data->trainee_list->company }}</td>
+                                                                        <td>{{ $data->trainee_list->bus }}</td>
+                                                                        <td>{{ $data->trainee_list->dorm }}</td>
+                                                                        <td>{{ $data->date_scanned }}</td>
+                                                                        <td>{{ $data->time_scanned }}</td>
+                                                                        <td>{{ $data->meal_type->name }}</td>
+                                                                        </tr>
+                                                        @endforeach
+                                                </tbody>
+                                        </table>
+                                @else
+                                        <h1 class="text-center text-danger mt-5">No data available.</h1>
+                                @endif
+                                
                 </div>
 
                 <div class="col-md-12">
