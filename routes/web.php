@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QrcodeController;
 use App\Livewire\Components\CreateBarcodeComponent;
 use App\Livewire\Components\CreateEmployeeMealLogComponent;
 use App\Livewire\Components\CreateTraineeMealLogComponent;
@@ -8,6 +9,7 @@ use App\Livewire\Components\ShowBarcodeComponent;
 use App\Livewire\Components\ShowEmployeeMealLogComponent;
 use App\Livewire\Components\ShowTraineeListComponent;
 use App\Livewire\Components\ShowTraineeMealLogComponent;
+use App\Livewire\GenerateDocumentsComponent\EmployeeMealTrackerGenerateReport;
 use App\Livewire\Components\ShowUserComponent;
 use App\Livewire\Components\ShowUserTypeComponent;
 use App\Livewire\Components\StoreUserTypeComponent;
@@ -18,11 +20,13 @@ use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\CreateUserTypeComponent;
 use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
+use App\Livewire\ParentComponents\GenerateReportsComponent;
 use App\Livewire\ParentComponents\IndexUserTypeComponent;
 use App\Livewire\ParentComponents\ManageUserComponent;
 use App\Livewire\ParentComponents\TraineeMealTrackerComponent;
 use App\Livewire\ParentComponents\UserRegistrationComponent;
 use App\Livewire\ParentComponents\WeeklyTraineeListComponent;
+use App\Models\Qrcode;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +57,8 @@ Route::middleware([
     //parent component
     Route::prefix('Emp-Meal-Tracker')->as('Emp-Meal-Tracker.')->group(function(){
             Route::get('index' , EmployeeMealTrackerComponent::class)->name('index');
+            Route::get('generateReport' , [EmployeeMealTrackerGenerateReport::class, 'generatePDF'])->name('generateReport');
+            // Route::get('Emp-Meal-Tracker/show' , EmployeeMealTrackerComponent::class)->name('Emp-Meal-Tracker.show');
     });
 
     Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
@@ -66,6 +72,11 @@ Route::middleware([
     Route::prefix('Emp-Barcode-List')->as('Emp-Barcode-List.')->group(function(){
             Route::get('index' , EmployeeBarcodeListComponent::class)->name('index');
             Route::get('create' , CreateEmployeeBarcodeComponent::class)->name('create');
+            Route::get('update' , CreateEmployeeBarcodeComponent::class)->name('update');
+    });
+
+    Route::prefix('Generate-Reports')->as('Generate-Reports.')->group(function(){
+        Route::get('show' , GenerateReportsComponent::class)->name('show'); 
     });
 
     Route::prefix('Manage-User')->as('Manage-User.')->group(function(){

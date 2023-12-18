@@ -27,9 +27,11 @@ class BarcodeSeeder extends Seeder
                 'category_id' => $faker->numberBetween(1 , 9),
                 'category_type_id' => $faker->numberBetween(1 , 11),
                 'owner' => $faker->name,
+              
                 'company' => $faker->randomElement(['NETI','NTMA','NSMI']),
                 'start_date' => $startDate,
                 'end_date' => $endDate,
+
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

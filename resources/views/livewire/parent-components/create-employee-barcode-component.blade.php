@@ -1,7 +1,13 @@
 <section>
 
     <div class="container">
-            <h1>Create Barcode</h1>
+            @if (session()->has('idtoedit'))
+                <h1>Update Barcode</h1>        
+            @else
+                <h1>Create Barcode</h1>  
+            @endif
+
+            <!-- Dismissing alert -->
 
             <div class="row bg-white mt-3">
 
