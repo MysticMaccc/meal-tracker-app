@@ -64,7 +64,8 @@
                                         </div>
                                         <div class="col-lg-12 mt-2 d-grid gx-1">
                                             {{-- <a class="btn btn-danger" wire:click="generatePDFEMT" wire:loading.attr="disabled" href="{{ route('Emp-Meal-Tracker.generateReport') }}" target="_blank">Generate PDF</a> --}}
-                                            <button class="btn btn-danger" wire:loading.attr="disabled" type="submit">Generate PDF</a>
+                                            <button class="btn btn-danger" wire:loading.remove type="submit">Generate PDF</a>
+                                            <button class="btn btn-danger disabled" wire:loading.delay>Generating PDF ...</a>
                                         </div>
                                     </div>
                                     </form>
