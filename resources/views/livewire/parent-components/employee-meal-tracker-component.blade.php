@@ -8,10 +8,19 @@
                             <livewire:components.create-employee-meal-log-component :autofocus="$autofocus"  />
                     </div>
 
-                    <div class="col-md-8 mb-2">
-                            <livewire:components.show-employee-meal-log-component />
+                    <div class="col-md-8 mb-2 mt-3">
+                        <div class="card shadow">
+                                <div class="card-header">
+                                        <h4>Logs</h4>
+                                </div>
+                                <div class="card-body">
+                                        <livewire:components.show-employee-meal-log-component />
+                                </div>
+                        </div>
                     </div>
             </div>
     </div>
+
+    
 
 </section>

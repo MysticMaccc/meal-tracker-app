@@ -1,10 +1,15 @@
 <script>
     // Render blocking JS:
-    if (localStorage.theme) document.documentElement.setAttribute("data-theme", localStorage.theme);
-    </script>
+if (localStorage.theme) document.documentElement.setAttribute("data-theme", localStorage.theme);
+</script>
 
 <!-- Favicon icon-->
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/favicon/favicon.ico')}}">
+
+<!-- Flatpickr -->
+<link rel="stylesheet" href="{{asset('assets/libs/flatpickr/dist/flatpickr.min.css')}}">
+
+
 <!-- Libs CSS -->
 <!-- Libs CSS -->
 <link href="{{asset('assets/fonts/feather/feather.css')}}" rel="stylesheet">
@@ -14,3 +19,5 @@
 <!-- Theme CSS -->
 <link rel="stylesheet" href="{{asset('assets/css/theme.min.css')}}">
 <!-- endbuild -->
+
+

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
 	<div class="container-fluid px-0">
-		<a class="navbar-brand" href="@@webRoot/index.html"><img src="@@webRoot/assets/images/brand/logo/logo.svg"
-				alt="" class="" ></a>
+		{{-- <a class="navbar-brand" href="@@webRoot/index.html"><img src="@@webRoot/assets/images/brand/logo/logo.svg"
+				alt="" class="" ></a> --}}
 		<!-- Mobile view nav wrap -->
 
 <div class="ms-auto d-flex align-items-center order-lg-3">
@@ -100,6 +100,11 @@
 						<a href="{{ route('Emp-Barcode-List.show') }}" class="nav-link" wire:navigate>
 							Employee Barcode List
 						</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('Generate-Reports.show') }}" wire:navigate>
+						Reports
+					</a>
 				</li>
 				
 			</ul>

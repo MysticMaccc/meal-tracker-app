@@ -8,10 +8,12 @@ use App\Livewire\Components\ShowBarcodeComponent;
 use App\Livewire\Components\ShowEmployeeMealLogComponent;
 use App\Livewire\Components\ShowTraineeListComponent;
 use App\Livewire\Components\ShowTraineeMealLogComponent;
+use App\Livewire\GenerateDocumentsComponent\EmployeeMealTrackerGenerateReport;
 use App\Livewire\GenerateDocumentsComponent\GenerateBarcodeCardComponent;
 use App\Livewire\ParentComponents\CreateEmployeeBarcodeComponent;
 use App\Livewire\ParentComponents\EmployeeBarcodeListComponent;
 use App\Livewire\ParentComponents\EmployeeMealTrackerComponent;
+use App\Livewire\ParentComponents\GenerateReportsComponent;
 use App\Livewire\ParentComponents\TraineeMealTrackerComponent;
 use App\Livewire\ParentComponents\WeeklyTraineeListComponent;
 use App\Models\Qrcode;
@@ -45,6 +47,7 @@ Route::middleware([
     //parent component
     Route::prefix('Emp-Meal-Tracker')->as('Emp-Meal-Tracker.')->group(function(){
             Route::get('show' , EmployeeMealTrackerComponent::class)->name('show');
+            Route::get('generateReport' , [EmployeeMealTrackerGenerateReport::class, 'generatePDF'])->name('generateReport');
             // Route::get('Emp-Meal-Tracker/show' , EmployeeMealTrackerComponent::class)->name('Emp-Meal-Tracker.show');
     });
 
@@ -60,6 +63,10 @@ Route::middleware([
             Route::get('show' , EmployeeBarcodeListComponent::class)->name('show');
             Route::get('create' , CreateEmployeeBarcodeComponent::class)->name('create');
             Route::get('update' , CreateEmployeeBarcodeComponent::class)->name('update');
+    });
+
+    Route::prefix('Generate-Reports')->as('Generate-Reports.')->group(function(){
+        Route::get('show' , GenerateReportsComponent::class)->name('show'); 
     });
 
 

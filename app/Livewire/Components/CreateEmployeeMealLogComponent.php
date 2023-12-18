@@ -34,6 +34,8 @@ class CreateEmployeeMealLogComponent extends Component
         $this->create();
     }
 
+    
+
     public function filterTime()
     {
         $currentTime = Carbon::parse($this->currentTime);
