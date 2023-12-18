@@ -1,4 +1,5 @@
 <div>
+        <x-loader/>
         <x-submit-message />
         @if ($update_done)
             <div class="alert alert-success alert-dismissible fade show" role="alert">

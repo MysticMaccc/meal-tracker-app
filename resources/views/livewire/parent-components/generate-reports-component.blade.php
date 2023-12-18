@@ -1,29 +1,9 @@
 <section>
-    {{-- <div style="position: relative;">
-        <!-- Your content here -->
-    
-        <!-- Loader -->
-        <span style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" wire:loading>
-            <x-loader/>
-        </span>
-    </div> --}}
 
-    <div style="position: relative;">
-        <!-- Your content here -->
+
+    <x-loader/>
     
-        <!-- Transparent overlay -->
-        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: auto;" wire:loading></div>
-    
-        <!-- Loader -->
-        <span style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;" wire:loading>
-            <x-loader/>
-        </span>
-    </div>
-    
-    
-    {{-- <span wire:loading>
-        <livewire:components.loader />
-    </span> --}}
+
 
     <div class="container ">
             <h1>Generate Reports to PDF</h1>
