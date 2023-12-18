@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('trainee_meal_logs', function (Blueprint $table) {
-            $table->unsignedBigInteger('trainee_id')->default(NULL)->after('trainee_list_id');
-
-            $table->foreign('trainee_id')->references('trainee_id')->on('trainee_lists');
+        Schema::create('user_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('is_deleted')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('user_types');
     }
 };

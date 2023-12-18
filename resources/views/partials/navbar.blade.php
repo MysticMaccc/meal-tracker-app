@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
 	<div class="container-fluid px-0">
-		<a class="navbar-brand" href="@@webRoot/index.html"><img src="@@webRoot/assets/images/brand/logo/logo.svg"
-				alt="" class="" ></a>
+		{{-- <a class="navbar-brand" href="@@webRoot/index.html"><img src="@@webRoot/assets/images/brand/logo/logo.svg"
+				alt="" class="" ></a> --}}
 		<!-- Mobile view nav wrap -->
 
 <div class="ms-auto d-flex align-items-center order-lg-3">
@@ -82,24 +82,46 @@
 			<ul class="navbar-nav">
 
 				<li class="nav-item">
-						<a href="{{ route('Emp-Meal-Tracker.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Emp-Meal-Tracker.index') }}" class="nav-link" wire:navigate>
 							Employee Meal Tracker
 						</a>
 				</li>
 				<li class="nav-item">
-						<a href="{{ route('Trainee-Meal-Tracker.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Trainee-Meal-Tracker.index') }}" class="nav-link" wire:navigate>
 							Trainee Meal Tracker
 						</a>
 				</li>
 				<li class="nav-item">
-						<a href="{{ route('Weekly-Trainee-List.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Weekly-Trainee-List.index') }}" class="nav-link" wire:navigate>
 							Weekly Trainee List
 						</a>
 				</li>
 				<li class="nav-item">
-						<a href="{{ route('Emp-Barcode-List.show') }}" class="nav-link" wire:navigate>
+						<a href="{{ route('Emp-Barcode-List.index') }}" class="nav-link" wire:navigate>
 							Employee Barcode List
 						</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ route('Generate-Reports.show') }}" wire:navigate>
+						Reports
+					</a>
+        </li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLanding" data-bs-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						Settings
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarLanding">
+						<li>
+							<h4 class="dropdown-header">Settings</h4>
+						</li>
+				
+						<li>
+							<a href="{{route('Manage-User.index')}}" class="dropdown-item d-flex justify-content-between" wire:navigate>
+								User Management
+							</a>
+						</li>
+					</ul>
 				</li>
 				
 			</ul>

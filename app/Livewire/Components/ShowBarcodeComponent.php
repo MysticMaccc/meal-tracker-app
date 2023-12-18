@@ -34,9 +34,20 @@ class ShowBarcodeComponent extends Component
         // ->layout('layouts.none');
     }
 
+    public function editinfo($id){
+        Session::put('idtoedit' , $id);
+        return redirect()->to('/Emp-Barcode-List/update');
+    }
+
     public function generate_Barcode($id)
     {
         Session::put('id' , $id);
         return redirect()->to('/Generate-Document/barcodeCard');
+    }
+
+    public function generate_QRcode($id)
+    {
+        Session::put('id' , $id);
+        return redirect()->to('/Generate-Document/QRCode');
     }
 }

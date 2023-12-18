@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeMealLogSeeder extends Seeder
 {
@@ -18,7 +18,7 @@ class EmployeeMealLogSeeder extends Seeder
 
         foreach (range(1, 200) as $index) {
             DB::table('employee_meal_logs')->insert([
-                'barcode_id' => $faker->numberBetween(1 , 99),
+                'barcode_id' => $faker->numberBetween(1 , 200),
                 'date_scanned' => $faker->date,
                 'time_scanned' => $faker->time,
                 'meal_type_id' => $faker->numberBetween(1 , 3),

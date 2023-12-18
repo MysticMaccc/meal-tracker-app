@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('barcodes', function (Blueprint $table) {
-            $table->dropColumn('course');
-            $table->dropColumn('course_code');
-            $table->dropColumn('course_type');
+        Schema::create('qrcodes', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('qrcodes');
     }
 };
