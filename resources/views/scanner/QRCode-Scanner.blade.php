@@ -11,7 +11,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true })
+                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
                     .then(function (stream) {
                         var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), scanPeriod: 5 });
 
