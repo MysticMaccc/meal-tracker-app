@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Scanner;
 
-use App\Models\Qrcode;
-use App\Http\Requests\StoreQrcodeRequest;
-use App\Http\Requests\UpdateQrcodeRequest;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class QrcodeController extends Controller
+class QRCodeScannerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('scanner.QRCode-Scanner');
     }
 
     /**
@@ -27,15 +26,19 @@ class QrcodeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreQrcodeRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Get the scanned value from the request
+        $scannedValue = $request->input('content');
+
+        // Dump and die to see the scanned value in the console
+        dd($scannedValue);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Qrcode $qrcode)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +46,7 @@ class QrcodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Qrcode $qrcode)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +54,7 @@ class QrcodeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateQrcodeRequest $request, Qrcode $qrcode)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +62,7 @@ class QrcodeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Qrcode $qrcode)
+    public function destroy(string $id)
     {
         //
     }
