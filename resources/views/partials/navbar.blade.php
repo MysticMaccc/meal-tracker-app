@@ -86,16 +86,16 @@
 							Employee Meal Tracker
 						</a>
 				</li>
-				<li class="nav-item">
+				{{-- <li class="nav-item">
 						<a href="{{ route('Trainee-Meal-Tracker.index') }}" class="nav-link" wire:navigate>
 							Trainee Meal Tracker
 						</a>
-				</li>
-				<li class="nav-item">
+				</li> --}}
+				{{-- <li class="nav-item">
 						<a href="{{ route('Weekly-Trainee-List.index') }}" class="nav-link" wire:navigate>
 							Weekly Trainee List
 						</a>
-				</li>
+				</li> --}}
 				<li class="nav-item">
 						<a href="{{ route('Emp-Barcode-List.index') }}" class="nav-link" wire:navigate>
 							Employee Barcode List

@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Policies\AuthorizeNavigationPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
+
+        Gate::define('authorizeMealTracker' , [AuthorizeNavigationPolicy::class , 'authorizeMealTracker']);
+        Gate::define('authorizeEmployeeList' , [AuthorizeNavigationPolicy::class , 'authorizeEmployeeList']);
+        Gate::define('authorizeReport' , [AuthorizeNavigationPolicy::class , 'authorizeReport']);
+        Gate::define('authorizeSettings' , [AuthorizeNavigationPolicy::class , 'authorizeSettings']);
     }
 }

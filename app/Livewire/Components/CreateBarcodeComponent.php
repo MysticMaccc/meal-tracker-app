@@ -18,7 +18,6 @@ class CreateBarcodeComponent extends Component
     public $company;
     public $start_date;
     public $end_date;
-    public $update_done = null;
 
 
     protected $rules = [
@@ -42,47 +41,13 @@ class CreateBarcodeComponent extends Component
 
     public function render()
     {
-        if (session('idtoedit')) {
-            $updatebarcode = Barcode::find(session('idtoedit'));
-            $this->card_number = $updatebarcode->card_number;
-            $this->barcode_value = $updatebarcode->barcode_value;
-            $this->category_id = $updatebarcode->category_id;
-            $this->category_type_id = $updatebarcode->category_type_id;
-            $this->owner = $updatebarcode->owner;
-            $this->company = $updatebarcode->company;
-            $this->start_date = $updatebarcode->start_date;
-            $this->end_date = $updatebarcode->end_date;
-        }
-
         $category_data = Category::where('is_deleted' , 0)->orderBy('name','asc')->get();
         $category_type_data = Category_type::where('is_deleted' , 0)->orderBy('name','asc')->get();
 
         return view('livewire.components.create-barcode-component' , compact('category_data' , 'category_type_data'));
         // ->layout('layouts.none');
     }
-
-    public function update(){
-        $this->validate();
-
-        try {
-            $updatebarcode = Barcode::find(session('idtoedit'));
-             $updatebarcode->card_number = $this->card_number;
-             $updatebarcode->barcode_value = $this->barcode_value;
-             $updatebarcode->category_id = $this->category_id;
-             $updatebarcode->category_type_id = $this->category_type_id;
-             $updatebarcode->owner = $this->owner;
-             $updatebarcode->company = $this->company;
-             $updatebarcode->start_date = $this->start_date;
-             $updatebarcode->end_date = $this->end_date;
-             $updatebarcode->save();
-
-            $this->update_done = 1;
-
-        } catch (\Exception $e) {
-            dd($e);
-        }
-    }
-
+    
     public function create()
     {
             $this->validate();

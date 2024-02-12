@@ -63,14 +63,14 @@ Route::middleware([
             // Route::get('Emp-Meal-Tracker/show' , EmployeeMealTrackerComponent::class)->name('Emp-Meal-Tracker.show');
     });
 
-    Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
-            Route::get('index' , TraineeMealTrackerComponent::class)->name('index');
-            Route::get('generateReport', [TraineeMealTrackerGenerateReport::class, 'generatePDF'])->name('generateReport');
-    });
+    // Route::prefix('Trainee-Meal-Tracker')->as('Trainee-Meal-Tracker.')->group(function(){
+    //         Route::get('index' , TraineeMealTrackerComponent::class)->name('index');
+    //         Route::get('generateReport', [TraineeMealTrackerGenerateReport::class, 'generatePDF'])->name('generateReport');
+    // });
 
-    Route::prefix('Weekly-Trainee-List')->as('Weekly-Trainee-List.')->group(function(){
-            Route::get('index' , WeeklyTraineeListComponent::class)->name('index');
-    });
+    // Route::prefix('Weekly-Trainee-List')->as('Weekly-Trainee-List.')->group(function(){
+    //         Route::get('index' , WeeklyTraineeListComponent::class)->name('index');
+    // });
 
     Route::prefix('Emp-Barcode-List')->as('Emp-Barcode-List.')->group(function(){
             Route::get('index' , EmployeeBarcodeListComponent::class)->name('index');
@@ -104,14 +104,14 @@ Route::middleware([
         Route::get('store' , CreateEmployeeMealLogComponent::class)->name('store');
     });
 
-    Route::prefix('Trainee-List')->as('Trainee-List.')->group(function(){
-        Route::get('show' , ShowTraineeListComponent::class)->name('show');
-    });
+    // Route::prefix('Trainee-List')->as('Trainee-List.')->group(function(){
+    //     Route::get('show' , ShowTraineeListComponent::class)->name('show');
+    // });
 
-    Route::prefix('Trainee-Meal-Log')->as('Trainee-Meal-Log.')->group(function(){
-        Route::get('show' , ShowTraineeMealLogComponent::class)->name('show');
-        Route::get('store' , CreateTraineeMealLogComponent::class)->name('store');
-    });
+    // Route::prefix('Trainee-Meal-Log')->as('Trainee-Meal-Log.')->group(function(){
+    //     Route::get('show' , ShowTraineeMealLogComponent::class)->name('show');
+    //     Route::get('store' , CreateTraineeMealLogComponent::class)->name('store');
+    // });
 
     Route::prefix('User')->as('User.')->group(function () {
         Route::get('show' , ShowUserComponent::class)->name('show');

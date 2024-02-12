@@ -9,7 +9,7 @@
                 <div class="table-responsive mt-2 col-md-12">
                         <x-submit-message />
                         @if (!$barcode_data->isEmpty())
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped table-hover text-sm">
                                                 <thead>
                                                         <tr>
                                                                 <th>Card Number</th>
@@ -25,24 +25,7 @@
                                                 </thead>
                                                 <tbody>
                                                         @foreach ($barcode_data as $data)
-                                                                <tr>
-                                                                        <td>{{ $data->card_number }}</td>
-                                                                        <td>{{ $data->barcode_value }}</td>
-                                                                        <td>{{ $data->category->name  }}</td>
-                                                                        <td>{{ $data->category_type->name  }}</td>
-                                                                        <td>{{ $data->owner }}</td>
-                                                                        <td>{{ $data->company }}</td>
-                                                                        <td>{{ $data->start_date }}</td>
-                                                                        <td>{{ $data->end_date }}</td>
-                                                                        <td>
-                                                                                <button class="btn btn-sm btn-info rounded-3 m-1" title="Update" wire:click="editinfo({{$data->id}})">
-                                                                                        <i class="bi bi-pencil-square"></i>
-                                                                                </button>
-                                                                                <button class="btn btn-sm btn-success rounded-3 m-1" title="Print QR Code" wire:click="generate_QRcode({{$data->id}})">
-                                                                                        <i class="bi bi-qr-code"></i>
-                                                                                </button>
-                                                                        </td>
-                                                                </tr>
+                                                                <livewire:components.barcode-list-item-component :barcode="$data" />
                                                         @endforeach
                                                 </tbody>
                                 </table>

@@ -17,7 +17,10 @@
     },
     "dependencies": {
         "@zxing/library": "^0.20.0",
+        "html5-qrcode": "^2.3.8",
         "instascan": "^1.0.0",
+        "pdf-manip": "^1.0.3",
+        "qr-scanner": "^1.4.2",
         "quagga": "^0.12.1"
     }
 }

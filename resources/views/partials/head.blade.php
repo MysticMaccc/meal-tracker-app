@@ -20,6 +20,5 @@ if (localStorage.theme) document.documentElement.setAttribute("data-theme", loca
 <link rel="stylesheet" href="{{asset('assets/css/theme.min.css')}}">
 <!-- endbuild -->
 
-<!-- Include instascan library -->
-<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
 

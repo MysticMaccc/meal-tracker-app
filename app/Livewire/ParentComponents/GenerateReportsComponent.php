@@ -4,11 +4,13 @@ namespace App\Livewire\ParentComponents;
 
 use App\Models\Employee_meal_log;
 use App\Models\Trainee_meal_log;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class GenerateReportsComponent extends Component
 {
-
+    use AuthorizesRequests;
     public $datefrom = null;
     public $dateto= null;
 
@@ -16,6 +18,11 @@ class GenerateReportsComponent extends Component
         'datefrom' => 'required',
         'dateto' => 'required|date|after:datefrom'
     ];
+
+    public function mount()
+    {
+        Gate::authorize('authorizeReport');
+    }
 
     public function generatePDFEMT()
     {

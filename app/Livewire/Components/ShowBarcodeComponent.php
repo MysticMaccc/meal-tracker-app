@@ -11,7 +11,9 @@ class ShowBarcodeComponent extends Component
 {
     use WithPagination;
     public $search = '';
-
+    public $data;
+    protected $listeners = ['dataUpdated' => 'dataUpdated'];
+    
     public function render()
     {
         $barcode_data = Barcode::where('card_number' , 'like' , '%'.$this->search.'%')
@@ -27,27 +29,14 @@ class ShowBarcodeComponent extends Component
                                         $query2->where('name' , 'like' , '%'.$this->search.'%');
                                 })
                                 ->paginate(6);
-
-        return view('livewire.components.show-barcode-component',[
-            'barcode_data' => $barcode_data
-        ]);
+                                
+        return view('livewire.components.show-barcode-component', compact('barcode_data'));
         // ->layout('layouts.none');
     }
-
-    public function editinfo($id){
-        Session::put('idtoedit' , $id);
-        return redirect()->to('/Emp-Barcode-List/update');
-    }
-
-    public function generate_Barcode($id)
+    
+    public function dataUpdated()
     {
-        Session::put('id' , $id);
-        return redirect()->to('/Generate-Document/barcodeCard');
+            session()->flash('success', 'Information updated successfully!');
     }
 
-    public function generate_QRcode($id)
-    {
-        Session::put('id' , $id);
-        return redirect()->to('/Generate-Document/QRCode');
-    }
 }
