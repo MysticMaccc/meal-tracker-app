@@ -25,7 +25,7 @@
                                                 </thead>
                                                 <tbody>
                                                         @foreach ($barcode_data as $data)
-                                                                <livewire:components.barcode-list-item-component :barcode="$data" />
+                                                                <livewire:components.barcode-list-item-component :barcode="$data" :key="$data->id" />
                                                         @endforeach
                                                 </tbody>
                                 </table>

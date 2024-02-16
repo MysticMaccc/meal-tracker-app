@@ -47,7 +47,7 @@ class CreateEmployeeMealLogComponent extends Component
         return $result;
     }
 
-    public function store()
+    public function updatedBarcodeValue()
     {
             $this->validate();
             try 
