@@ -27,7 +27,7 @@
                             placeholder="Select a date...">
                     </div>
                     <div class="col-lg-12 mt-2 d-grid gx-1"><button class="btn btn-danger" wire:loading.remove
-                            type="submit">Generate PDF</a>
+                            type="submit">Generate Report</a>
                             <button class="btn btn-danger disabled" wire:loading>Generating PDF ...</a>
                     </div>
                 </div>
