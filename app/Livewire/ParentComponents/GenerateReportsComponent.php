@@ -2,11 +2,13 @@
 
 namespace App\Livewire\ParentComponents;
 
-use App\Models\Employee_meal_log;
-use App\Models\Trainee_meal_log;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Gate;
+use App\Livewire\GenerateDocumentsComponent\EmployeeMealTrackerGenerateReport;
 use Livewire\Component;
+use App\Models\Trainee_meal_log;
+use App\Models\Employee_meal_log;
+use Illuminate\Support\Facades\Gate;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class GenerateReportsComponent extends Component
 {
@@ -31,30 +33,15 @@ class GenerateReportsComponent extends Component
                                                    ->where('date_scanned' , '<=' , $this->dateto)
                                                    ->orderBy('id','desc')->get();
 
-        // dd($employee_meal_log_data);
-        session(['meal_log' => $employee_meal_log_data]);
-        session(['daterange' => date('F d, Y', strtotime($this->datefrom)).' - '.date('F d, Y', strtotime($this->dateto)) ]);
-        return redirect()->route('Emp-Meal-Tracker.generateReport');
+        $date_range = date('F d, Y', strtotime($this->datefrom)).' - '.date('F d, Y', strtotime($this->dateto));
+        return Excel::download(new EmployeeMealTrackerGenerateReport($employee_meal_log_data), 
+        'Employee_Meal_Log_from_'.$date_range.'.xlsx');
         
     }
-
-    public function generatePDFTMT()
-    {
-        
-      
-        $this->validate();
-        $trainee_meal_log_data = Trainee_meal_log::where('date_scanned' , '>=' , $this->datefrom)
-                                                 ->where('date_scanned' , '<=' , $this->dateto)
-                                                 ->orderBy('id','desc')->get();
-
-        session(['meal_log' => $trainee_meal_log_data]);
-        session(['daterange' => date('F d, Y', strtotime($this->datefrom)).' - '.date('F d, Y', strtotime($this->dateto)) ]);
-        return redirect()->route('Trainee-Meal-Tracker.generateReport');
-
-    }
-
+    
     public function render()
     {
         return view('livewire.parent-components.generate-reports-component')->layout('layouts.app');
     }
+
 }

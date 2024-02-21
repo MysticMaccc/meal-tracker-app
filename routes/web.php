@@ -52,14 +52,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
     //parent component
     Route::prefix('Emp-Meal-Tracker')->as('Emp-Meal-Tracker.')->group(function(){
             Route::get('index' , EmployeeMealTrackerComponent::class)->name('index');
-            Route::get('generateReport' , [EmployeeMealTrackerGenerateReport::class, 'generatePDF'])->name('generateReport');
+            // Route::get('generateReport' , [EmployeeMealTrackerGenerateReport::class, 'generate'])->name('generateReport');
             // Route::get('Emp-Meal-Tracker/show' , EmployeeMealTrackerComponent::class)->name('Emp-Meal-Tracker.show');
     });
 

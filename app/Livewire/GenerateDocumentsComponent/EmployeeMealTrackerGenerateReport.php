@@ -2,52 +2,53 @@
 
 namespace App\Livewire\GenerateDocumentsComponent;
 
-use Illuminate\Support\Facades\View;
 use Livewire\Component;
-use TCPDF;
+use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Files\LocalTemporaryFile;
 
-class EmployeeMealTrackerGenerateReport extends Component
+class EmployeeMealTrackerGenerateReport implements WithEvents
 {
-    public function generatePDF(){
-        // dd(session('meal_log'));
-        $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+    use Exportable;
+    public $employee_meal_log_data;
 
-        // Set document information
-        $pdf->SetCreator('NETIOESX');
-        $pdf->SetAuthor('NETIOESX');
-        $pdf->SetTitle('Employee Meal Logs Report');
-        $pdf->SetSubject('Meal Logs');
-        $pdf->SetKeywords('NETI');
-
-        // Set page margin to zero
-        $pdf->SetMargins(4, 0, 4, 1, true); // Set all margins to zero
-
-        // Set auto page break mode
-        $pdf->SetAutoPageBreak(false, 0); // Disable automatic page breaks
-
-        // Remove header border
-        $pdf->setPrintHeader(false); // Disable printing header
-        $pdf->setPrintFooter(false); // Disable printing footer
-        $pdf->setPageOrientation('landscape');
-        $name = "Employee Meal Report - ".session('daterange');
-        // Add a page
-        $pdf->AddPage();
-
-        // Render Blade view to get HTML content
-        $html = View::make('livewire.generate-documents-component.employee-meal-tracker-generate-report',[
-            'meal_logs' => session('meal_log'),
-            'date_range' => session('daterange')
-        ])->render();
-
-        // Convert HTML to PDF
-        $pdf->writeHTML($html, true, false, true, false, '');
-
-        // Output PDF to the browser or save to a file
-        $pdf->Output($name, 'I');
-    }
-
-    public function render()
+    public function __construct($employee_meal_log_data)
     {
-        return view('livewire.generate-documents-component.employee-meal-tracker-generate-report');
+        $this->employee_meal_log_data = $employee_meal_log_data;
+    }
+    
+    public function registerEvents(): array
+    {
+        return [
+            BeforeWriting::class => function (BeforeWriting $event) {
+                $templateFile = new LocalTemporaryFile(storage_path('app/public/template/Meal_Log.xlsx'));
+                $event->writer->reopen($templateFile, Excel::XLSX);
+                $sheet = $event->writer->getSheetByIndex(0);
+
+                $this->WriteSheet($sheet);
+
+                $event->writer->getSheetByIndex(0)->export($event->getConcernable());
+
+                return $event->getWriter()->getSheetByIndex(0);
+            },
+        ];
+    }
+    
+    private function WriteSheet($sheet)
+    {
+        $rownumber = 2;
+        $autoIncrement = 1;
+
+        foreach ($this->employee_meal_log_data as $record) {
+            $sheet->setCellValue('A' . $rownumber, $record->barcode->card_number );
+            $sheet->setCellValue('B' . $rownumber, $record->barcode->owner );
+            $sheet->setCellValue('C' . $rownumber, $record->meal_type->name );
+            $sheet->setCellValue('D' . $rownumber, $record->date_scanned );
+            $sheet->setCellValue('E' . $rownumber, $record->time_scanned );
+            $rownumber++;
+            $autoIncrement++;
+        }
     }
 }
