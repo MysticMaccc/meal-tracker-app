@@ -45,8 +45,9 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
             $sheet->setCellValue('A' . $rownumber, $record->barcode->card_number );
             $sheet->setCellValue('B' . $rownumber, $record->barcode->owner );
             $sheet->setCellValue('C' . $rownumber, $record->meal_type->name );
-            $sheet->setCellValue('D' . $rownumber, $record->date_scanned );
-            $sheet->setCellValue('E' . $rownumber, $record->time_scanned );
+            $sheet->setCellValue('D' . $rownumber, $record->barcode->category->name );
+            $sheet->setCellValue('E' . $rownumber, $record->date_scanned );
+            $sheet->setCellValue('F' . $rownumber, $record->time_scanned );
             $rownumber++;
             $autoIncrement++;
         }
