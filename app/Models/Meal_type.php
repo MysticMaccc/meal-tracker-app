@@ -16,6 +16,6 @@ class Meal_type extends Model
 
     public function trainee_meal_log()
     {
-            return $this->hasMany(Trainee_meal_log::class);
+        return $this->hasMany(Trainee_meal_log::class);
     }
 }

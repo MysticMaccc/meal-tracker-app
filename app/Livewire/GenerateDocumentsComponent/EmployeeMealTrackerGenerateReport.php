@@ -18,7 +18,7 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
     {
         $this->employee_meal_log_data = $employee_meal_log_data;
     }
-    
+
     public function registerEvents(): array
     {
         return [
@@ -35,19 +35,20 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
             },
         ];
     }
-    
+
     private function WriteSheet($sheet)
     {
         $rownumber = 2;
         $autoIncrement = 1;
 
         foreach ($this->employee_meal_log_data as $record) {
-            $sheet->setCellValue('A' . $rownumber, $record->barcode->card_number );
-            $sheet->setCellValue('B' . $rownumber, $record->barcode->owner );
-            $sheet->setCellValue('C' . $rownumber, $record->meal_type->name );
-            $sheet->setCellValue('D' . $rownumber, $record->barcode->category->name );
-            $sheet->setCellValue('E' . $rownumber, $record->date_scanned );
-            $sheet->setCellValue('F' . $rownumber, $record->time_scanned );
+            $sheet->setCellValue('A' . $rownumber, $record->barcode->card_number);
+            $sheet->setCellValue('B' . $rownumber, $record->barcode->owner);
+            $sheet->setCellValue('C' . $rownumber, $record->meal_type->name);
+            $sheet->setCellValue('D' . $rownumber, $record->barcode->category->name);
+            $sheet->setCellValue('E' . $rownumber, $record->barcode->category_type->name);
+            $sheet->setCellValue('F' . $rownumber, $record->date_scanned);
+            $sheet->setCellValue('G' . $rownumber, $record->time_scanned);
             $rownumber++;
             $autoIncrement++;
         }

@@ -9,14 +9,14 @@ class Barcode extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'card_number' ,
+        'card_number',
         'barcode_value',
-        'category_id' ,
-        'category_type_id' ,
+        'category_id',
+        'category_type_id',
         'owner',
         'company',
         'start_date',
-        'end_date' ,
+        'end_date',
     ];
 
     public function category()
