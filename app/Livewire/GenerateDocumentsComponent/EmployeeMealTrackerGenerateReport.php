@@ -142,6 +142,9 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
         // Add total row
         $sheet->setCellValue('B' . $rownumber, 'TOTAL');
         $sheet->setCellValue('C' . $rownumber, $grandTotal);
+        
+        // Apply currency format to grand total
+        $sheet->getStyle('C' . $rownumber)->getNumberFormat()->setFormatCode('₱#,##0.00');
 
         // Apply styling
         $this->applyStyles($sheet, $rownumber, count($dates));
