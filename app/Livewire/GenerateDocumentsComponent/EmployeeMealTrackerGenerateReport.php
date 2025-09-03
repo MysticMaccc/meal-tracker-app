@@ -51,21 +51,20 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
 
         // Add Category Type header in row 1
         $sheet->setCellValue('A1', 'Category Type: ' . $this->categoryName);
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:C1');
 
         // Add date range header in row 2
         $dateRange = date('F d, Y', strtotime($this->datefrom)) . ' - ' . date('F d, Y', strtotime($this->dateto));
         $sheet->setCellValue('A2', 'Date Range: ' . $dateRange);
-        $sheet->mergeCells('A2:D2');
+        $sheet->mergeCells('A2:C2');
 
         // Set column headers in row 3
-        $sheet->setCellValue('A3', 'Barcode ID');
-        $sheet->setCellValue('B3', 'Employee Name');
-        $sheet->setCellValue('C3', 'Category');
-        $sheet->setCellValue('D3', 'Total');
+        $sheet->setCellValue('A3', 'Employee Name');
+        $sheet->setCellValue('B3', 'Category');
+        $sheet->setCellValue('C3', 'Total');
 
-        // Set headers for dates and meal types starting from column E
-        $columnIndex = 5; // Starting from column E (A=1, B=2, C=3, D=4, E=5)
+        // Set headers for dates and meal types starting from column D
+        $columnIndex = 4; // Starting from column D (A=1, B=2, C=3, D=4)
         foreach ($dates as $date) {
             $columnLetter1 = $this->getColumnLetter($columnIndex);
             $columnLetter2 = $this->getColumnLetter($columnIndex + 1);
@@ -112,20 +111,19 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
         $grandTotal = 0;
 
         foreach ($employeeData as $employee) {
-            $sheet->setCellValue('A' . $rownumber, $employee['barcode_id']);
-            $sheet->setCellValue('B' . $rownumber, $employee['owner']);
-            $sheet->setCellValue('C' . $rownumber, $employee['category']);
+            $sheet->setCellValue('A' . $rownumber, $employee['owner']);
+            $sheet->setCellValue('B' . $rownumber, $employee['category']);
 
             // Calculate total amount for this employee
             $totalAmount = 0;
             foreach ($employee['meals'] as $dateMeals) {
                 $totalAmount += $dateMeals[1] + $dateMeals[2] + $dateMeals[3];
             }
-            $sheet->setCellValue('D' . $rownumber, $totalAmount);
+            $sheet->setCellValue('C' . $rownumber, $totalAmount);
             $grandTotal += $totalAmount;
 
             // Fill amounts for each date and meal type
-            $columnIndex = 5;
+            $columnIndex = 4;
             foreach ($dates as $date) {
                 $breakfastAmount = $employee['meals'][$date][1] ?? 0;
                 $lunchAmount = $employee['meals'][$date][2] ?? 0;
@@ -142,8 +140,8 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
         }
 
         // Add total row
-        $sheet->setCellValue('C' . $rownumber, 'TOTAL');
-        $sheet->setCellValue('D' . $rownumber, $grandTotal);
+        $sheet->setCellValue('B' . $rownumber, 'TOTAL');
+        $sheet->setCellValue('C' . $rownumber, $grandTotal);
 
         // Apply styling
         $this->applyStyles($sheet, $rownumber, count($dates));
@@ -162,10 +160,10 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
 
     private function applyStyles($sheet, $lastRow, $dateCount)
     {
-        $lastColumn = $this->getColumnLetter(4 + ($dateCount * 3));
+        $lastColumn = $this->getColumnLetter(3 + ($dateCount * 3));
 
         // Category Type row styling (row 1)
-        $sheet->getStyle('A1:D1')->applyFromArray([
+        $sheet->getStyle('A1:C1')->applyFromArray([
             'fill' => [
                 'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
                 'color' => ['rgb' => '2F5597']
@@ -182,7 +180,7 @@ class EmployeeMealTrackerGenerateReport implements WithEvents
         ]);
 
         // Date Range row styling (row 2)
-        $sheet->getStyle('A2:D2')->applyFromArray([
+        $sheet->getStyle('A2:C2')->applyFromArray([
             'fill' => [
                 'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
                 'color' => ['rgb' => '5B9BD5']
