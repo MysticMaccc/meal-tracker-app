@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Category_type;
 use Livewire\Component;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class BarcodeListItemComponent extends Component
 {
@@ -39,7 +41,7 @@ class BarcodeListItemComponent extends Component
     {
         $category_data = Category::all();
         $category_type_data = Category_type::all();
-        return view('livewire.components.barcode-list-item-component', compact('category_data','category_type_data'));
+        return view('livewire.components.barcode-list-item-component', compact('category_data', 'category_type_data'));
     }
 
     public function update()
@@ -81,5 +83,29 @@ class BarcodeListItemComponent extends Component
     {
         Session::put('id', $id);
         return redirect()->to('/Generate-Document/QRCode');
+    }
+
+    public function delete($id)
+    {
+        try {
+            $barcode = Barcode::find($id);
+            if (!$barcode) {
+                $this->dispatch('dataUpdated', message: 'Barcode not found.', type: 'error');
+                return;
+            }
+
+            DB::transaction(function () use ($barcode) {
+                // Delete dependent employee meal logs first
+                $barcode->employee_meal_log()->delete();
+                // Then delete the barcode
+                $barcode->delete();
+            });
+
+            $this->dispatch('dataUpdated', message: 'Barcode and related meal logs deleted.', type: 'success');
+        } catch (QueryException $e) {
+            $this->dispatch('dataUpdated', message: 'Delete failed due to related records (FK constraint).', type: 'error');
+        } catch (\Throwable $e) {
+            $this->dispatch('dataUpdated', message: 'Unexpected error during delete.', type: 'error');
+        }
     }
 }
