@@ -18,7 +18,7 @@
         <div class="row g-4">
             <!-- Create Meal Log Card -->
             <div class="col-lg-4">
-                <div class="card shadow-sm border-0 h-100">
+                <div class="card shadow-sm border-0 max-h-100">
                     <div class="card-header bg-primary text-white">
                         <h5 class="card-title mb-0">
                             <i class="bi bi-plus-circle me-2"></i>Add Meal Entry
