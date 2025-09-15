@@ -83,6 +83,10 @@
                 wire:click="generate_Barcode({{ $barcode->id }})">
                 <i class="bi bi-qr-code"></i>
             </button>
+            <button class="btn btn-sm btn-danger rounded-3 m-1" title="Delete" wire:click="delete({{ $barcode->id }})"
+                onclick="return confirm('Are you sure you want to delete this barcode?')">
+                <i class="bi bi-trash"></i>
+            </button>
         @endif
     </td>
 
